@@ -1,11 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import MyModule from '..'
+import MyModule from '../src/module'
 
 export default defineNuxtConfig({
   modules: [
-    MyModule
+    ['../src/module', {routes: ['/', '/about']}]
   ],
   myModule: {
-    addPlugin: true
+    addPlugin: false
   }
 })

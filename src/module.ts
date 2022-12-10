@@ -13,12 +13,14 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     addPlugin: true
   },
-  setup (options, nuxt) {
+  setup(options, nuxt) {
     if (options.addPlugin) {
       const { resolve } = createResolver(import.meta.url)
       const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
       nuxt.options.build.transpile.push(runtimeDir)
-      addPlugin(resolve(runtimeDir, 'plugin'))
+      addPlugin(
+        resolve(runtimeDir, 'plugin')
+      )
     }
   }
 })

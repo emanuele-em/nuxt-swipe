@@ -1,8 +1,10 @@
 <template>
-  <div>
-    Nuxt module playground!
-  </div>
+    <div>
+ABOUT
+    </div>
 </template>
 
 <script setup>
+
 </script>
+
