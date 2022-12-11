@@ -1,11 +1,14 @@
 <template>
-    <div @touchstart="e => $swipe(e, routes)" @touchend="e => $handleSwipe(e)">
+    <div @touchstart="e => $swipe(e)" @touchend="e => $handleSwipe(e)">
         <slot />
     </div>
 </template>
   
 <script setup lang="ts">
 import { useNuxtApp } from '#app'
-const routes = ['/', '/about']
+
+let nuxtApp = useNuxtApp()
+console.log(nuxtApp)
+
 </script>
   

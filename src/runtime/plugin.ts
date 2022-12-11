@@ -1,14 +1,9 @@
-import { defineNuxtPlugin, navigateTo, useRoute } from '#app'
+import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin((NuxtApp) => {
-  console.log()
   let swipe
-  NuxtApp.provide('swipe', (e, routes:Array<string>) => {
-    const route = useRoute().path;
-    const current = routes.indexOf(route)
-    const prev = current > 0 ? current -1 : null
-    const next = current < routes.length-1 ? current +1 : null
-    swipe = new Swipe(e, null, routes[prev], routes[next]);
+  NuxtApp.provide('swipe', (e) => {
+    swipe = new Swipe(e);
   })
 
   NuxtApp.provide('handleSwipe', (e) => {
@@ -17,12 +12,11 @@ export default defineNuxtPlugin((NuxtApp) => {
     }
 
     swipe.setEndEvent(e);
-    if(swipe.isSwipeRight() && swipe.prev) {
-      navigateTo(swipe.prev)
-    } else if(swipe.isSwipeLeft() && swipe.next){
-      navigateTo(swipe.next)
+    if(swipe.isSwipeRight()) {
+      NuxtApp.emit('test')
+    } else if(swipe.isSwipeLeft()){
+      NuxtApp.emit('test')
     }
-
     swipe = null;
   })
 
@@ -36,12 +30,10 @@ class Swipe{
     static SWIPE_UP     = 3
     static SWIPE_DOWN   = 4
 
-    constructor(startEvent, endEvent, prev, next)
+    constructor(startEvent, endEvent)
     {
         this.startEvent = startEvent
         this.endEvent = endEvent || null
-        this.prev = prev
-        this.next = next
         
     }
 

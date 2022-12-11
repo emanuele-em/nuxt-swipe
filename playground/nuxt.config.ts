@@ -3,7 +3,7 @@ import MyModule from '../src/module'
 
 export default defineNuxtConfig({
   modules: [
-    ['../src/module', {routes: ['/', '/about']}]
+    ['../src/module']
   ],
   myModule: {
     addPlugin: false
