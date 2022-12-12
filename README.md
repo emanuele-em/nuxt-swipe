@@ -18,7 +18,7 @@ Then, add nuxt-swipe to the modules section of your nuxt.config.js file:
 ```javascript
   export default {
     modules: [
-        'nuxt-swipe'
+        '@emanuele-em/nuxt-swipe'
     ]
   }
 
