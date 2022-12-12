@@ -26,7 +26,7 @@ Then, add nuxt-swipe to the modules section of your nuxt.config.js file:
 
 ## Usage
 
-To use the module, simply add `<Swipe>` componentit will be the component that will intercept the _swipe_ gesture
+To use the module, simply add `<Swipe>` component, it will be the component that will intercept the _swipe_ gesture
 
 For example:
 ```javascript
