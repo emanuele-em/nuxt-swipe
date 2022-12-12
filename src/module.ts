@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url'
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addComponent } from '@nuxt/kit'
 
 export interface ModuleOptions {
   addPlugin: boolean
@@ -7,17 +7,26 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'nuxt-swipe',
-    configKey: 'swipe'
+    name: '@emanuele-em/nuxt-swipe',
+    configKey: 'nuxt-swipe',
+    compatibility: {
+      // Semver version of supported nuxt versions
+      nuxt: '^3.0.0'
+    }
   },
   defaults: {
     addPlugin: true
   },
-  setup(options, nuxt) {
+  setup (options, nuxt) {
     if (options.addPlugin) {
       const { resolve } = createResolver(import.meta.url)
       const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-      nuxt.options.build.transpile.push(runtimeDir)
+
+      addComponent({
+        name: 'Swipe',
+        filePath: resolve(runtimeDir, 'components', 'Swipe.vue')
+      })
+      
       addPlugin(
         resolve(runtimeDir, 'plugin')
       )

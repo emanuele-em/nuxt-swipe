@@ -1,14 +1,25 @@
 <template>
-    <div @touchstart="e => $swipe(e)" @touchend="e => $handleSwipe(e)">
+    <Swipe>
         <slot />
-    </div>
+    </Swipe>
 </template>
   
-<script setup lang="ts">
-import { useNuxtApp } from '#app'
+<script setup>
+import { useNuxtApp, useRoute, navigateTo } from '#app'
 
-let nuxtApp = useNuxtApp()
-console.log(nuxtApp)
+const nuxtApp = useNuxtApp()
+const routes = ['/', '/about']
+
+nuxtApp.$bus.$on('swipe', (direction) => {
+    let indexCurrentRoute = routes.indexOf(useRoute().path)
+    if (direction === 'left' && routes[indexCurrentRoute + 1]) {
+        indexCurrentRoute += 1
+    }
+    if (direction === 'right' && routes[indexCurrentRoute - 1]) {
+        indexCurrentRoute -= 1
+    }
+    return navigateTo(routes[indexCurrentRoute])
+})
 
 </script>
   

@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-swipe",
+  "name": "@emanuele-em/nuxt-swipe",
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
@@ -21,7 +21,8 @@
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0"
+    "@nuxt/kit": "^3.0.0",
+    "mitt": "^3.0.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.2.1",
@@ -29,5 +30,23 @@
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.29.0",
     "nuxt": "^3.0.0"
-  }
+  },
+  "description": "## Development",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emanuele-em/nuxt-swipe.git"
+  },
+  "keywords": [
+    "gesture",
+    "swipe",
+    "nuxt3",
+    "vue3",
+    "vue",
+    "nuxt"
+  ],
+  "author": "emanuele-em",
+  "bugs": {
+    "url": "https://github.com/emanuele-em/nuxt-swipe/issues"
+  },
+  "homepage": "https://github.com/emanuele-em/nuxt-swipe#readme"
 }
