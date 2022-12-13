@@ -105,7 +105,7 @@ nuxtApp.$bus.$on('swipe', (direction) => {
 
 ## Demo
 
-demo
+[demo-nuxt-swipe.pages.dev](https://demo-nuxt-swipe.pages.dev/)
 
 
 ## Roadmap
