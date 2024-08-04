@@ -19,6 +19,10 @@ export default defineNuxtPlugin((NuxtApp) => {
         }
 
         swipe.setEndEvent(e);
+        if (swipe.hasMultipleTouches()) {
+            swipe = null;
+            return;
+        }
         if (swipe.isSwipeRight()) {
             return NuxtApp.$bus.$emit('swipe', 'right')
         }
@@ -68,6 +72,12 @@ class Swipe {
         return this.getSwipeDirection() == Swipe.SWIPE_DOWN
     }
 
+    hasMultipleTouches() {
+        return (
+            this.startEvent.touches.length > 1 || this.endEvent.touches.length > 1
+        )
+    }
+  
     getSwipeDirection() {
         let start = this.startEvent.changedTouches[0]
         let end = this.endEvent.changedTouches[0]
